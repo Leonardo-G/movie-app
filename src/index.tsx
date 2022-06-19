@@ -1,7 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { AppRouter } from './routes/AppRoutes';
-import "./styles/base.css";
+
+import "./styles/base/base.css";
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+</style>
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

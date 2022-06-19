@@ -1,0 +1,63 @@
+.movie{
+    position: relative;
+    cursor: pointer;
+}
+.movie__img{
+    height: 90%;
+}
+
+.movie__title{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+
+.movie__title p{
+    font-family: 'Roboto Mono', monospace;
+    padding: 2rem 0;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.movie__title .title--p{
+    width: 80%;
+}
+
+.movie__title .title--rate{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.movie__title svg{
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.movie__background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-color: #000;
+    visibility: hidden;
+    transition: .2s all ease-in;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+}
+
+.movie:hover .movie__background{
+    visibility: visible;
+    transition: .2s all ease-in;
+    opacity: 1;
+}
+
+.movie__background p{
+    color: rgb(197, 174, 41);
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
