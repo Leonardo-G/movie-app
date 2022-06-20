@@ -1,5 +1,4 @@
-import React, { FC, useContext } from 'react'
-import { useState } from 'react';
+import { FC, useContext } from 'react'
 import { Star } from './Star';
 import { StarContext } from '../context/StarContext';
 

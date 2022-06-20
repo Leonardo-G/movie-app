@@ -7,6 +7,7 @@ import "../styles/pages/Home.css";
 import { RatingStars } from '../components/RatingStars';
 import { StarContext } from '../context/StarContext';
 import { Spinner } from '../components/UI/Spinner';
+import { Header } from '../components/UI/Header';
 
 export const Home = () => {
 
@@ -18,12 +19,12 @@ export const Home = () => {
         try {
             setLoading(true)
             if( starValue === 0 ){
-                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&page=10&adult=false`)
+                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&adult=false`)
                 const result = await response.json();
         
                 setMovies(result);
             }else{
-                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&page=10&vote_average.lte=${starValue * 2}`)
+                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&vote_average.lte=${starValue * 2}`)
                 const result = await response.json();
         
                 setMovies(result);
@@ -37,7 +38,7 @@ export const Home = () => {
     }
 
     useEffect( () => {
-       fetchApi()
+    //    fetchApi()
     }, [starValue])
 
     return (
@@ -46,6 +47,7 @@ export const Home = () => {
                 loading &&
                 <Spinner />
             }
+            <Header />
             <RatingStars />
             <section className='container'>
                 <div className='movies'>
