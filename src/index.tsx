@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { StarState } from './context/StarState';
 import { AppRouter } from './routes/AppRoutes';
 
 import "./styles/base/base.css";
@@ -14,6 +15,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <StarState>
       <AppRouter />
+    </StarState>
   </React.StrictMode>
 );

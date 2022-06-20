@@ -7,7 +7,7 @@ export interface Discover{
 
 export interface Movies{
     adult: boolean;
-    backdrop_path: string;
+    backdrop_path?: string;
     genre_ids: [number];
     id: string;
     original_language: string;
@@ -20,4 +20,5 @@ export interface Movies{
     video: boolean;
     vote_average: number;
     vote_count: number;
+    
 }
