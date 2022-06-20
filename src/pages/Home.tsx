@@ -26,7 +26,7 @@ export const Home = () => {
         
                 setMovies(result);
             }else{
-                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&vote_average.lte=${starValue * 2}&adult=false`)
+                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&vote_average.gte=${ (starValue * 2) - 2}&vote_average.lte=${ starValue * 2 }&adult=false`)
                 const result = await response.json();
                 console.log(result)
                 setMovies(result);

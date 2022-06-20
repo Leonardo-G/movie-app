@@ -10,6 +10,7 @@ interface Props {
 }
 
 export const Star: FC<Props> = ({star, starValue, handleChangeValue}) => {
+
     return (
         <div>
             <FontAwesomeIcon 
