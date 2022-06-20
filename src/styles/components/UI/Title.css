@@ -1,0 +1,14 @@
+.title{
+    display: flex;
+    column-gap: 2rem;
+    align-items: center;
+}
+
+.icon--title{
+    color: #d46651 ;
+}
+
+.title p{
+    font-weight: 800;
+    font-size: 2rem;
+}

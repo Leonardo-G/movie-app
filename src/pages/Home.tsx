@@ -8,6 +8,8 @@ import { RatingStars } from '../components/RatingStars';
 import { StarContext } from '../context/StarContext';
 import { Spinner } from '../components/UI/Spinner';
 import { Header } from '../components/UI/Header';
+import { Title } from '../components/UI/Title';
+import { faFireFlameCurved } from '@fortawesome/free-solid-svg-icons';
 
 export const Home = () => {
 
@@ -24,9 +26,9 @@ export const Home = () => {
         
                 setMovies(result);
             }else{
-                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&vote_average.lte=${starValue * 2}`)
+                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&vote_average.lte=${starValue * 2}&adult=false`)
                 const result = await response.json();
-        
+                console.log(result)
                 setMovies(result);
             }
         
@@ -38,7 +40,7 @@ export const Home = () => {
     }
 
     useEffect( () => {
-    //    fetchApi()
+       fetchApi()
     }, [starValue])
 
     return (
@@ -48,12 +50,17 @@ export const Home = () => {
                 <Spinner />
             }
             <Header />
-            <RatingStars />
             <section className='container'>
+                <div className='flex'>
+                    <Title title={ "Popular Movies" } icon={ faFireFlameCurved }/>
+                    <RatingStars />
+                </div>
+
                 <div className='movies'>
                 {
-                    movies?.results.map( movie => (
-                        <Movie key={ movie.id } { ...movie }/>
+                    movies?.results.length !== 0 &&
+                    movies?.results.map( (movie, idx) => (
+                        <Movie key={ movie.id } idx={ idx } { ...movie }/>
                     ))
                 }
                 </div>
