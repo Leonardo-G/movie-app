@@ -11,16 +11,23 @@ import { Header } from '../components/UI/Header';
 import { Title } from '../components/UI/Title';
 
 import "../styles/pages/Home.css";
+import { useSearchParams } from 'react-router-dom';
 
 export const Home = () => {
 
     const { starValue, searchValue } = useContext( FilterContext );
     const [movies, setMovies] = useState<Discover | null>(null);
-    const [loading, setLoading] = useState<boolean>(false)
-
+    const [loading, setLoading] = useState<boolean>(false);
+    const [params, setParams] = useSearchParams({});
+    
     const fetchApi = async ( ) => {
         try {
+            if(params.has("search")){
+                setParams({})
+            }
+            
             setLoading(true)
+            
             if( starValue === 0 ){
                 const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&adult=false`)
                 const result = await response.json();
@@ -29,7 +36,7 @@ export const Home = () => {
             }else{
                 const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&vote_average.gte=${ (starValue * 2) - 2}&vote_average.lte=${ starValue * 2 }&adult=false`)
                 const result = await response.json();
-                console.log(result)
+                
                 setMovies(result);
             }
         
@@ -43,8 +50,11 @@ export const Home = () => {
     const fetchSearcAPI = async () => {
         const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${searchValue}`)
         const result = await response.json();
-        console.log(result)
+        
         setMovies(result);
+        setParams({
+            search: searchValue
+        })
     }
 
     useEffect( () => {

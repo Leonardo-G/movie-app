@@ -6,17 +6,21 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { Movies } from '../interfaces/bodyAPI';
 
 import "../styles/components/Movie.css";
+import { Link } from 'react-router-dom';
 
 interface Props extends Movies{
     idx: number;
 }
 
-export const Movie:FC<Props> = ({title, poster_path, idx, release_date }) => {
+export const Movie:FC<Props> = ({title, poster_path, idx, release_date, id }) => {
 
     const year = release_date && release_date.split("-")[0]
 
     return (
-        <a className={`movie ${ idx === 0 && "popular"}`}>
+        <Link
+            to={ `/movie/${id}` }
+            className={`movie ${ idx === 0 && "popular"}`}
+        >
             <div className="movie__img">
                 <img src={ process.env.REACT_APP_URL_IMAGE + poster_path } alt={ title } />
             </div>
@@ -27,6 +31,6 @@ export const Movie:FC<Props> = ({title, poster_path, idx, release_date }) => {
                 }
                 <p>{ title }</p>
             </div>
-        </a>
+        </Link>
     )
 }

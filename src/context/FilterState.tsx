@@ -22,7 +22,8 @@ export const FilterState:FC<Props> = ({ children }) => {
     }
 
     const handleSearch = ( value: string ) => {
-        setSearchValue(value)
+
+        setSearchValue(value);
     }
 
     return (
