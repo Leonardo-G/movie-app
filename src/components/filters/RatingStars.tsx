@@ -1,10 +1,10 @@
 import { FC, useContext } from 'react'
-import { Star } from './Star';
-import { StarContext } from '../context/StarContext';
+import { Star } from '../Star';
+import { FilterContext } from '../../context/filterContext';
 
 export const RatingStars: FC = () => {
 
-    const { starValue, handleChangeValue } = useContext(StarContext);
+    const { starValue, handleChangeValue } = useContext(FilterContext);
 
     return (
         <div style={{   
