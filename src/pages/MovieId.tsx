@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react'
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { fetchGetMovie } from '../helpers/fetchApi';
 import { MovieDetail } from '../interfaces/bodyAPI';
 
 import "../styles/pages/MovieView.css";
@@ -15,21 +16,20 @@ export const MovieId = () => {
 
     const getMovie = async () => {
         
-        const result = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-        const resp = await result.json();
+        const [ getMovie, getVideo ] = await Promise.all([
+            fetchGetMovie(id as string),
+            fetchGetMovie(id as string, "videos")
+        ])
 
-        const result1 = await fetch(`https://api.themoviedb.org/3/movie/${ id }/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-        const resp1 = await result1.json();
-
-        const key = resp1.results.filter( (r:any) => r.site === "YouTube" && r.type === "Teaser")[0];
-        console.log(key)
+        const key = getVideo.results.filter( (r:any) => r.site === "YouTube" && r.type === "Teaser")[0];
 
         setVideoKey(key.key)
-        setMovie(resp);
+        setMovie(getMovie);
     }
 
     useEffect(() => {
-        getMovie()
+        getMovie();
+        // eslint-disable-next-line
     }, [])
     
     return (

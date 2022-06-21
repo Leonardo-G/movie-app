@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 
+import { useSearchParams } from 'react-router-dom';
 import { faFireFlameCurved } from '@fortawesome/free-solid-svg-icons';
 
 import { Movie } from '../components/Movie';
@@ -9,9 +10,9 @@ import { FilterContext } from '../context/filterContext';
 import { Spinner } from '../components/UI/Spinner';
 import { Header } from '../components/UI/Header';
 import { Title } from '../components/UI/Title';
+import { fetchGetMovies } from '../helpers/fetchApi';
 
 import "../styles/pages/Home.css";
-import { useSearchParams } from 'react-router-dom';
 
 export const Home = () => {
 
@@ -29,15 +30,13 @@ export const Home = () => {
             setLoading(true)
             
             if( starValue === 0 ){
-                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&adult=false`)
-                const result = await response.json();
-        
-                setMovies(result);
+                const getMovies = await fetchGetMovies("discover","sort_by=popularity.desc")
+
+                setMovies(getMovies);
             }else{
-                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=es-AR&sort_by=popularity.desc&vote_average.gte=${ (starValue * 2) - 2}&vote_average.lte=${ starValue * 2 }&adult=false`)
-                const result = await response.json();
+                const getMoviesByRate = await fetchGetMovies("discover", `sort_by=popularity.desc&vote_average.gte=${ (starValue * 2) - 2}&vote_average.lte=${ starValue * 2 }`)
                 
-                setMovies(result);
+                setMovies(getMoviesByRate);
             }
         
         } catch (error) {
@@ -48,10 +47,9 @@ export const Home = () => {
     }
 
     const fetchSearcAPI = async () => {
-        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${searchValue}`)
-        const result = await response.json();
+        const getMoviesBySearch = await fetchGetMovies("search", `query=${searchValue}`)
         
-        setMovies(result);
+        setMovies(getMoviesBySearch);
         setParams({
             search: searchValue
         })
