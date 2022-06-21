@@ -12,7 +12,7 @@ body{
     background-color: #fff;
 }
 
-h1, h2, p{
+h1, h2, p, span{
     font-family: "Roboto", sans-serif;
     font-size: 1.4rem;
 }

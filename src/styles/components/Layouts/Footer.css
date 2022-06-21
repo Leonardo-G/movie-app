@@ -1,0 +1,36 @@
+.footer{
+    background-color: #f1f1f1 ;
+    padding: 5rem 0;
+}
+
+.footerFlex{
+    display: flex;
+    flex-direction: column;
+}
+
+.footerFlex span{
+    font-size: 1.8rem;
+}
+
+.footerFlex__about{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerFlex__about span{
+    margin-right: 4rem;
+    font-weight: 700;
+}
+
+.footerFlex__info{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerFlex__info span{
+    font-size: 1.6rem;
+    margin-right: 4rem;
+    color: #696e6e;
+    font-weight: 500;
+}

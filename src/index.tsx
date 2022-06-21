@@ -6,7 +6,7 @@ import { AppRouter } from './routes/AppRoutes';
 import "./styles/base/base.css";
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap');
 </style>
 
 const root = ReactDOM.createRoot(

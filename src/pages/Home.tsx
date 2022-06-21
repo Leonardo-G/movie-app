@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 
-import { useSearchParams } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
 import { faFireFlameCurved } from '@fortawesome/free-solid-svg-icons';
 
 import { Movie } from '../components/Movie';
@@ -13,6 +13,7 @@ import { Title } from '../components/UI/Title';
 import { fetchGetMovies } from '../helpers/fetchApi';
 
 import "../styles/pages/Home.css";
+import { Footer } from '../components/layout/Footer';
 
 export const Home = () => {
 
@@ -47,12 +48,19 @@ export const Home = () => {
     }
 
     const fetchSearcAPI = async () => {
-        const getMoviesBySearch = await fetchGetMovies("search", `query=${searchValue}`)
-        
-        setMovies(getMoviesBySearch);
-        setParams({
-            search: searchValue
-        })
+        try {
+            setLoading(true)
+            const getMoviesBySearch = await fetchGetMovies("search", `query=${searchValue}`)
+            
+            setMovies(getMoviesBySearch);
+            setParams({
+                search: searchValue
+            })
+        } catch (error) {
+            console.log(error);   
+        } finally {
+            setLoading(false)
+        }
     }
 
     useEffect( () => {
@@ -88,6 +96,7 @@ export const Home = () => {
                 }
                 </div>
             </section>
+            <Footer />
         </>
     )
 }
