@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import "../../styles/components/UI/Nav.css";
 
@@ -26,7 +26,6 @@ export const Nav: FC = () => {
                     </div>
                 </div>
             </nav>
-            <Outlet />
         </>
     )
 }

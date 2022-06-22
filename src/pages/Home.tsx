@@ -1,19 +1,18 @@
 import { useContext, useEffect, useState } from 'react';
 
-import { Outlet, useSearchParams } from 'react-router-dom';
-import { faFireFlameCurved } from '@fortawesome/free-solid-svg-icons';
+import { useSearchParams } from 'react-router-dom';
+import { faFireFlameCurved, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 
 import { Movie } from '../components/Movie';
-import { Discover } from '../interfaces/bodyAPI';
+import { Discover, Movies } from '../interfaces/bodyAPI';
 import { RatingStars } from '../components/filters/RatingStars';
 import { FilterContext } from '../context/filterContext';
 import { Spinner } from '../components/UI/Spinner';
-import { Header } from '../components/UI/Header';
+import { Header } from '../components/layout/Header';
 import { Title } from '../components/UI/Title';
 import { fetchGetMovies } from '../helpers/fetchApi';
 
 import "../styles/pages/Home.css";
-import { Footer } from '../components/layout/Footer';
 
 export const Home = () => {
 
@@ -21,6 +20,7 @@ export const Home = () => {
     const [movies, setMovies] = useState<Discover | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [params, setParams] = useSearchParams({});
+    const [moviesRecently, setMoviesRecently] = useState<[Movies] | null>(null);
     
     const fetchApi = async ( ) => {
         try {
@@ -41,15 +41,15 @@ export const Home = () => {
             }
         
         } catch (error) {
-            console.log(error)    
+            console.log(error);  
         } finally{
-            setLoading(false)
+            setLoading(false);
         }
     }
 
     const fetchSearcAPI = async () => {
         try {
-            setLoading(true)
+            setLoading(true);
             const getMoviesBySearch = await fetchGetMovies("search", `query=${searchValue}`)
             
             setMovies(getMoviesBySearch);
@@ -63,13 +63,26 @@ export const Home = () => {
         }
     }
 
+    const fetchRecently = async () => {
+        const getMoviesRecently = await fetchGetMovies("discover", "sort_by=release_date&vote_average.gte=5&vote_count_gte=50")
+      
+        const firstMovies = getMoviesRecently.results.filter( (movie:Movies, idx: number) => idx < 6)
+        setMoviesRecently(firstMovies);
+    }
+
     useEffect( () => {
+
         if(searchValue === ""){
-            fetchApi()
+            fetchApi();
         }else{
-            fetchSearcAPI()
+            fetchSearcAPI();
         }
-    }, [starValue, searchValue])
+
+    }, [starValue, searchValue]);
+
+    useEffect(() => {
+        fetchRecently();
+    }, [])
 
     return (
         <>
@@ -91,12 +104,23 @@ export const Home = () => {
                 {
                     movies?.results.length !== 0 &&
                     movies?.results.map( (movie, idx) => (
-                        <Movie key={ movie.id } idx={ idx } { ...movie }/>
+                        <Movie key={ movie.id } idx={ idx } top={ true } { ...movie }/>
                     ))
                 }
                 </div>
             </section>
-            <Footer />
+            <section className='container'>
+                <div className='flex'>
+                    <Title title={ "Recently Added" } icon={ faLayerGroup }/>
+                </div>
+                <div className='movies'>
+                    {
+                        moviesRecently?.map( (movie, idx) => (
+                            <Movie key={ movie.id } idx={ idx } { ...movie }/>
+                        ))
+                    }
+                </div>
+            </section>
         </>
     )
 }
