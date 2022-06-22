@@ -20,7 +20,14 @@ export const Movie:FC<Props> = ({title, poster_path, idx, release_date, id, top 
             className={`movie ${ idx === 0 && top && "popular"}`}
         >
             <div className="movie__img">
-                <img src={ process.env.REACT_APP_URL_IMAGE + poster_path } alt={ title } />
+                {
+                    poster_path 
+                    ?
+                        <img src={ process.env.REACT_APP_URL_IMAGE + poster_path } alt={ title } />
+                    : 
+                        <img src="/assets/movie.jpg" alt={ title } />
+
+                }
             </div>
             <div className='movie__background'>
                 {

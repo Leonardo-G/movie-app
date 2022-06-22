@@ -64,7 +64,7 @@ export const Home = () => {
     }
 
     const fetchRecently = async () => {
-        const getMoviesRecently = await fetchGetMovies("discover", "sort_by=release_date&vote_average.gte=5&vote_count_gte=50")
+        const getMoviesRecently = await fetchGetMovies("discover", "sort_by=release_date.desc&vote_average.gte=5&vote_count.gte=50")
       
         const firstMovies = getMoviesRecently.results.filter( (movie:Movies, idx: number) => idx < 6)
         setMoviesRecently(firstMovies);

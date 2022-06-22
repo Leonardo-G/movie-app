@@ -21,7 +21,8 @@ export const MovieId = () => {
             fetchGetMovie(id as string),
             fetchGetMovie(id as string, "videos")
         ])
-        const key = getVideo.results.filter( (r:any) => r.site === "YouTube" && r.type === "Teaser")[0];
+        console.log(getVideo);
+        const key = getVideo.results.filter( (r:any) => r.site === "YouTube" && (r.type === "Trailer" || r.type === "Teaser"))[0];
         if(key){
             setVideoKey(key.key)
         }
@@ -41,8 +42,12 @@ export const MovieId = () => {
                     <div className='movieDetail'>
                         <div className='movieDetail__poster'>
                             {
-                                movie.poster_path &&
-                                <img src={process.env.REACT_APP_URL_IMAGE + movie.poster_path} alt="" />
+                                movie.poster_path 
+                                ?
+                                    <img src={ process.env.REACT_APP_URL_IMAGE + movie.poster_path } alt={ movie.title } />
+                                : 
+                                    <img src="/assets/movie.jpg" alt={ movie.title } />
+
                             }
                             {
                                 movie.homepage &&
@@ -60,8 +65,14 @@ export const MovieId = () => {
                                     movie.genres.map( m => "  " + m.name)
                                 }
                             </p>
-                            <p className='info--synopsis'><span>Synopsis: </span> { movie.overview }</p>
-                            <p><span>Duration: </span> { movie.runtime } minutes</p>
+                            {
+                                movie.overview &&
+                                <p className='info--synopsis'><span>Synopsis: </span> { movie.overview }</p>
+                            }
+                            {
+                                movie.runtime &&
+                                <p><span>Duration: </span> { movie.runtime } minutes</p>
+                            }
                         </div>
                     </div>
                     <div className='trailer'>
