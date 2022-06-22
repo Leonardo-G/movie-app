@@ -1,5 +1,5 @@
 import { FC, useContext } from 'react'
-import { Star } from '../Star';
+import { Star } from '../UI/Star';
 import { FilterContext } from '../../context/filterContext';
 
 export const RatingStars: FC = () => {

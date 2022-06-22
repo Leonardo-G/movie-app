@@ -31,7 +31,8 @@ export const FilterState:FC<Props> = ({ children }) => {
             starValue,
             handleChangeValue,
             searchValue,
-            handleSearch
+            handleSearch,
+            setSearchValue
         }}>
             { children }
         </FilterContext.Provider>

@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 
 import { useSearchParams } from 'react-router-dom';
-import { faFireFlameCurved, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
+import { faFireFlameCurved, faLayerGroup, faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import { Movie } from '../components/Movie';
+import { Movie } from '../components/Movies/Movie';
 import { Discover, Movies } from '../interfaces/bodyAPI';
 import { RatingStars } from '../components/filters/RatingStars';
 import { FilterContext } from '../context/filterContext';
@@ -78,6 +78,7 @@ export const Home = () => {
             fetchSearcAPI();
         }
 
+    // eslint-disable-next-line 
     }, [starValue, searchValue]);
 
     useEffect(() => {
@@ -93,19 +94,34 @@ export const Home = () => {
             <Header />
             <section className='container'>
                 <div className='flex'>
-                    <Title title={ "Popular Movies" } icon={ faFireFlameCurved }/>
                     {
-                        searchValue === "" &&
-                        <RatingStars />
+                        searchValue === ""
+                        ?
+                            <Title title={ "Popular Movies" } icon={ faFireFlameCurved }/>
+                        : 
+                            <Title title={ "Movies" } icon={ faSearch }/>
+
+                    }
+                    {
+                        searchValue === "" 
+                        ? <RatingStars />
+                        : <p style={{"fontSize": "2rem", "fontWeight": "600"}}>Results of Searh: "{ searchValue }"</p>
                     }
                 </div>
 
                 <div className='movies'>
                 {
-                    movies?.results.length !== 0 &&
-                    movies?.results.map( (movie, idx) => (
-                        <Movie key={ movie.id } idx={ idx } top={ true } { ...movie }/>
-                    ))
+                    movies?.results.length !== 0 
+                    ?
+                        movies?.results.map( (movie, idx) => (
+                            <Movie key={ movie.id } idx={ idx } top={ true } { ...movie }/>
+                        ))
+                    :
+                        <p style={{
+                            "textAlign": "center",
+                            "fontWeight": "600",
+                            "margin": "10rem 0"
+                        }}>No Movies Found</p>
                 }
                 </div>
             </section>
