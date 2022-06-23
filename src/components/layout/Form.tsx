@@ -15,22 +15,26 @@ export const Form: FC = () => {
             <div className='container'>
                 <div className='contact'>
                     <div className='contact__info'>
-                        <h3 className='info--title'>Want to Annotate?</h3>
-                        <p className='info--contact'>Are you a writer? Feel like you could provide some great feedback on Movies.
-                            Here are the features and benefits of becoming a member.
-                        </p>
-                        <p className='info--text'>
-                            <FontAwesomeIcon icon={ faCheck } className="icon--check"/>
-                            Discuss movies with friends
-                        </p>
-                        <p className='info--text'>
-                            <FontAwesomeIcon icon={ faCheck } className="icon--check"/>
-                            Build your collection of disucssed films.
-                        </p>
-                        <p className='info--text'>
-                            <FontAwesomeIcon icon={ faCheck } className="icon--check"/>
-                            Save your favourites movies
-                        </p>
+                        <div>
+                            <h3 className='info--title'>Want to Annotate?</h3>
+                            <p className='info--contact'>Are you a writer? Feel like you could provide some great feedback on Movies.
+                                Here are the features and benefits of becoming a member.
+                            </p>
+                        </div>
+                        <div>
+                            <p className='info--text'>
+                                <FontAwesomeIcon icon={ faCheck } className="icon--check"/>
+                                Discuss movies with friends
+                            </p>
+                            <p className='info--text'>
+                                <FontAwesomeIcon icon={ faCheck } className="icon--check"/>
+                                Build your collection of disucssed films.
+                            </p>
+                            <p className='info--text'>
+                                <FontAwesomeIcon icon={ faCheck } className="icon--check"/>
+                                Save your favourites movies
+                            </p>
+                        </div>
                     </div>
                     <form className='contact__form'>
                         <h3 className='form--title'>Create Account</h3>

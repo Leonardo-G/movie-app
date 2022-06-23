@@ -34,3 +34,21 @@
     color: #696e6e;
     font-weight: 500;
 }
+
+@media (max-width: 860px) {
+    .footerFlex{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .footerFlex__about, .footerFlex__info{
+        display: block;
+    }
+    .footerFlex__about span, .footerFlex__info span{
+        display: block;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+    .footerFlex__info span{
+        text-align: right;
+    }
+}

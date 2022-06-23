@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import { FC, MouseEvent, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import "../../styles/components/UI/Nav.css";
@@ -6,6 +8,12 @@ import "../../styles/components/UI/Nav.css";
 export const Nav: FC = () => {
 
     const params = useParams();
+    const [menuOpen, setMenuOpen] = useState<boolean>(false)
+
+    const handleOpenNav = (e: MouseEvent<HTMLDivElement>) => {
+        setMenuOpen( !menuOpen );
+        document.body.classList.toggle("body--static")
+    }
 
     return (
         <>
@@ -19,7 +27,15 @@ export const Nav: FC = () => {
                             >Flixus</Link>
                             <p>Browse +</p>
                         </div>
-                        <div className='navigationLinks__right'>
+                        <div 
+                            onClick={ handleOpenNav }
+                        >
+                            <FontAwesomeIcon 
+                                icon={ faAlignLeft }
+                                className="icon--nav"  
+                            />
+                        </div>
+                        <div className={`navigationLinks__right ${ menuOpen && "right--open" }`}>
                             <p>Login</p>
                             <p className='right--btn'>Sign Up</p>
                         </div>

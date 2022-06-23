@@ -105,7 +105,7 @@ export const Home = () => {
                     {
                         searchValue === "" 
                         ? <RatingStars />
-                        : <p style={{"fontSize": "2rem", "fontWeight": "600"}}>Results of Searh: "{ searchValue }"</p>
+                        : <p className='search-result'>Results of Searh: "{ searchValue }"</p>
                     }
                 </div>
 

@@ -29,3 +29,15 @@
     font-style: italic;
     font-weight: 300;
 }
+
+@media (max-width: 860px) {
+    .input--search{
+        width: 90%;
+    }
+    .icon--search {
+        font-size: 1.4rem;
+    }
+    .input--search input{
+        font-size: 1.4rem;
+    }
+}

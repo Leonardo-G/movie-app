@@ -1,4 +1,4 @@
-import "../../styles/components/UI/Header.css";
+import "../../styles/components/Layouts/Header.css";
 import { Search } from "../filters/Search";
 
 export const Header = () => {

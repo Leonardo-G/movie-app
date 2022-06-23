@@ -1,0 +1,16 @@
+.rating{
+    display: flex;
+    align-items: center;
+}
+
+.rating p{
+    font-size: 2rem;
+    padding-right: 1rem;
+    font-weight: 700;
+}
+
+@media (max-width: 860px) {
+    .rating p{
+        font-size: 1.4rem;
+    }
+}
