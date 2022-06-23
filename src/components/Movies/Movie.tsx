@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Movies } from '../../interfaces/bodyAPI';
 
-import "../../styles/components/Movie.css";
+import "../../styles/components/Movies//Movie.css";
 
 interface Props extends Movies{
     idx: number;

@@ -50,6 +50,10 @@
     height: 60rem;
 }
 
+.icon--start{
+    font-size: 1.8rem;
+}
+
 @media (max-width:860px) {
     .movieDetail{
         column-gap: 1.5rem;

@@ -1,4 +1,4 @@
-import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faGlobe, faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react'
 import { useEffect } from 'react';
@@ -61,6 +61,10 @@ export const MovieId = () => {
                             <p><span>Original Title: </span> { movie.original_title }</p>
                             <p><span>Year: </span> { movie.release_date }</p>
                             <p><span>Gnres: </span>
+                            <p><span>Rating: </span>
+                                { movie.vote_average }
+                                <FontAwesomeIcon icon={ faStarSolid } className="icon--start"/>
+                            </p>
                                 {
                                     movie.genres.map( m => "  " + m.name)
                                 }

@@ -1,9 +1,9 @@
 import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { FC, MouseEvent, useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FC, MouseEvent, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import "../../styles/components/UI/Nav.css";
+import "../../styles/components/Layouts/Nav.css";
 
 export const Nav: FC = () => {
 
