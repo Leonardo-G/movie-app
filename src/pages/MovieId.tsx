@@ -21,7 +21,7 @@ export const MovieId = () => {
             fetchGetMovie(id as string),
             fetchGetMovie(id as string, "videos")
         ])
-        console.log(getVideo);
+        
         const key = getVideo.results.filter( (r:any) => r.site === "YouTube" && (r.type === "Trailer" || r.type === "Teaser"))[0];
         if(key){
             setVideoKey(key.key)

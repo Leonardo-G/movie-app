@@ -1,6 +1,6 @@
 # App Movies
 
-Aplicación en modo de producción a través de [este link](https://legendary-mooncake-bb592b.netlify.app/). Realizado con React/TypeScript
+Aplicación en modo de producción a través de [este link](https://legendary-mooncake-bb592b.netlify.app/). Realizado con React/TypeScript consultando la [API "Themoviedb"](https://developers.themoviedb.org/3/discover/movie-discover)
 
 ### Instalación
 
