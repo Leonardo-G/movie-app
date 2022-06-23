@@ -1,0 +1,100 @@
+.section--form{
+    background-color: #000;
+    padding: 12rem 0;
+}
+
+.contact{
+    display: flex;
+    justify-content: space-around;
+    column-gap: 7rem;
+    padding: 0 8rem;
+}
+
+.contact__info{
+    color: #fff;
+    flex: 1;
+}
+
+.contact__info p{
+    font-size: 1.8rem;
+}
+
+.contact__info .info--title{
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.contact__info .info--contact{
+    font-weight: 500;
+    padding: 2rem 0;
+    color: rgba(255, 255, 255, 0.671);
+    line-height: 1.5;
+    width: 75%;
+}
+
+.contact__info .icon--check{
+    color: #ff750f;
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.contact__info .info--text{
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.contact__form{
+    flex: 1;
+    padding: 0 5rem;
+}
+
+.contact__form .form--title{
+    color: #fff;
+    font-size: 3rem;
+}
+
+.contact__form .form--row{
+    margin: 1.5rem 0;
+}
+
+.contact__form input {
+    font-size: 1.6rem;
+    padding: 1.4rem 2rem;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.contact__form .form--double{
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form--double p, .form--double span{
+    font-weight: 500;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.form--double span{
+    color: #ff750f;
+}
+
+.form--double .btn--submit{
+    color: #fff;
+    background-color: #ff750f;
+    padding: 1.6rem 1.5rem;
+    flex: 0.9;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.9rem;
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+}
+
+.form--double .btn--submit:hover{
+    background-color: #ff730fd0;
+    transition: .2s all ease-in-out;
+}
+
